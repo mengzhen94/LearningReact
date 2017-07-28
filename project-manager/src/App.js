@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Projects from './components/Projects';
+import AddProject from './components/AddProject';
 import './App.css';
 
 class App extends Component {
@@ -27,12 +28,18 @@ class App extends Component {
     ]})
   }
 
+  handleAddProject(project){
+    let projects = this.state.projects;
+    projects.push(project);
+    this.setState({projects : projects});
+  }
+
   render() {
     return (
       // We has only one element, it means there is not another div here
       // Put the data right in our states
       <div className="App">
-        My App
+        <AddProject addProject = {this.handleAddProject.bind(this)}/>
         <Projects projects = {this.state.projects}/>
       </div>
     );
